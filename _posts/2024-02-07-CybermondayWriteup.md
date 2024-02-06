@@ -11,8 +11,9 @@ categories: [Writeup, Hackthebox]
 {: .prompt-info }
 
 ### Default start:
+
 ```YAML
-# Nmap 7.93 scan initiated Sat Aug 19 18:04:35 2023 as: nmap -sV -A --max-rate=10000 -Pn -oN tcp.log cybermonday.htb
+Nmap 7.93 scan initiated Sat Aug 19 18:04:35 2023 as: nmap -sV -A --max-rate=10000 -Pn -oN tcp.log cybermonday.htb
 Nmap scan report for cybermonday.htb (10.129.122.202)
 Host is up (0.13s latency).
 Not shown: 998 closed tcp ports (conn-refused)
