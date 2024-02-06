@@ -16,20 +16,20 @@ categories: [Virtualization, OPSEC]
 
 > In Whonix Gateway:
 ```bash
-sudo date -s "DD MM YY HH:MM:SS" && sudo hwclock -w
+[gateway user ~]% sudo date -s "DD MM YY HH:MM:SS" && sudo hwclock -w
 > "17 OCT 2023 01:00:00" (Always UTC)
 ```
 ```bash
 #Configure using the NAT
-sudo ifconfig {any driver but that 10.152.xx.xx} inet 192.168.xx.xx netmask 255.255.255.0 broadcast 192.168.xx.255
-sudo ip route add default via 192.168.xx.xx
+[gateway user ~]% sudo ifconfig {any driver but that 10.152.xx.xx} inet 192.168.xx.xx netmask 255.255.255.0 broadcast 192.168.xx.255
+[gateway user ~]% sudo ip route add default via 192.168.xx.xx
 ```
 
 > Check start and end from IP range.
 {: .prompt-info }
 
 ```bash
-sudo nano /etc/systemcheck.d/30_default.conf
+[gateway user ~]% sudo nano /etc/systemcheck.d/30_default.conf
 """
 NO_EXIT_ON_UNSUPPORTED_VIRTUALIZER="1"
 
@@ -37,23 +37,37 @@ NO_EXIT_ON_IP_FORWARDING_DETECTION="1"
 """
 ```
 ```bash
-systemcheck
+[gateway user ~]% systemcheck
 
-sudo tor@default restart
+[gateway user ~]% sudo tor@default restart
+
+[gateway user ~]% nyx
 ```
+### Explaination:
+> Since the Vmware it's a non-free software, it's considered as unsupported virtualizer, so you need to change it before run the "systemcheck". However, this proccess can be chain with other anonymous layers, like VPN's no-logs, a transparent proxy. So you can make go further about mutiple routing and trace. that's a good strategy for web-sniffers and scrappers.
+
 #### in your VM:
 ```bash
 (If you don't have any IP addr attributed)
-sudo dhclient
+Minerva at Hogwarts in ~
+↪ sudo dhclient
 ````
 
 > (for the same driver in whonix gateway 10.152.xx.xx)
 {: .prompt-info }
 
 ```bash
-sudo ifconfig {interface} inet 10.152.152.11 netmask 255.255.192.00 broadcast 10.152.191.255
-sudo ip route add default via 10.152.152.xx
+Minerva at Hogwarts in ~
+↪ sudo ifconfig {interface} inet 10.152.152.11 netmask 255.255.192.00 broadcast 10.152.191.255
+
+Minerva at Hogwarts in ~
+↪ sudo ip route add default via 10.152.152.xx
 ```
 
 >THAT IP SHOW IN WHONIX
 {: .prompt-warning }
+
+![Desktop View](/images/a.png)
+![Desktop View](/images/c.png)
+![Desktop View](/images/b.png)
+
