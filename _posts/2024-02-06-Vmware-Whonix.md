@@ -3,6 +3,13 @@ title: Configuring whonix network at VMware Workstation
 date: 2024-02-06 09:30:00 - 03:00
 categories: [Virtualization, OPSEC]
 ---
+{ : .prompt-tip 
+I don't know if this configuration is possible to make in Vmware Player (knowed by Vmware Free too). Might you can use the default network drivers and some custom NAT networks to make it, but probably it's more annoying than use the GUI.
+I did't notice any problems and you may don't need to manual configure the driver itself. So, after that.
+}
+{ : .prompt-tip
+Also i've been used the whonix always in live mode, since the Vmware in normal boot have a huge problems about drivers and similars.
+}
 ```
 Whonix Vware + Custom nat
 
