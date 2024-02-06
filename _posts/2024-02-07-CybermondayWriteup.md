@@ -204,6 +204,8 @@ After some tests, we can work around two parameters:
   "method"
 }
 ```
+![Desktop View](/images/cybermonday/sendRequest.png)
+
 <https://blog.crowsec.com.br/ssrf-protocol-smuggling/>
 <https://www.silentrobots.com/ssrf-protocol-smuggling-in-plaintext-credential-handlers-ldap/>
 <https://book.hacktricks.xyz/pentesting-web/ssrf-server-side-request-forgery>
