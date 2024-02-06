@@ -24,8 +24,10 @@ sudo date -s "DD MM YY HH:MM:SS" && sudo hwclock -w
 sudo ifconfig {any driver but that 10.152.xx.xx} inet 192.168.xx.xx netmask 255.255.255.0 broadcast 192.168.xx.255
 sudo ip route add default via 192.168.xx.xx
 ```
+
 > Check start and end from IP range.
 {: prompt-info }
+
 ```bash
 sudo nano /etc/systemcheck.d/30_default.conf
 """
@@ -44,11 +46,14 @@ sudo tor@default restart
 (If you don't have any IP addr attributed)
 sudo dhclient
 ````
+
 > (for the same driver in whonix gateway 10.152.xx.xx)
 {: prompt-info }
+
 ```bash
 sudo ifconfig {interface} inet 10.152.152.11 netmask 255.255.192.00 broadcast 10.152.191.255
 sudo ip route add default via 10.152.152.xx
 ```
+
 >THAT IP SHOW IN WHONIX
-{: prompt-warn }
+{: prompt-warning }
