@@ -71,3 +71,4 @@ Minerva at Hogwarts in ~
 ![Desktop View](/images/c.png)
 ![Desktop View](/images/b.png)
 
+Well, that's a first content i'll published here.So i don't know how exactly keeping writting or extending more about the trick. Any doubts you can call me by an email or comments. 
