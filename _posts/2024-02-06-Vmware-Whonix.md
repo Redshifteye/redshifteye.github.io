@@ -26,7 +26,7 @@ sudo ip route add default via 192.168.xx.xx
 ```
 
 > Check start and end from IP range.
-{: prompt-info }
+{: .prompt-info }
 
 ```bash
 sudo nano /etc/systemcheck.d/30_default.conf
@@ -48,7 +48,7 @@ sudo dhclient
 ````
 
 > (for the same driver in whonix gateway 10.152.xx.xx)
-{: prompt-info }
+{: .prompt-info }
 
 ```bash
 sudo ifconfig {interface} inet 10.152.152.11 netmask 255.255.192.00 broadcast 10.152.191.255
@@ -56,4 +56,4 @@ sudo ip route add default via 10.152.152.xx
 ```
 
 >THAT IP SHOW IN WHONIX
-{: prompt-warning }
+{: .prompt-warning }
