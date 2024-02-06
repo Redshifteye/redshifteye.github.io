@@ -11,36 +11,44 @@ categories: [Virtualization, OPSEC]
 
 > Also i've been used the whonix always in live mode, since the Vmware in normal boot have a huge problems about drivers and similars.
 {: .prompt-tip } 
-```
-Whonix Vware + Custom nat
 
-In Whonix Gateway:
+#### Whonix Vware + Custom nat
+
+> In Whonix Gateway:
+```bash
 sudo date -s "DD MM YY HH:MM:SS" && sudo hwclock -w
-> "17 OCT 2023 01:00:00" (Sempre horário do UTC)
-
-(Configure using the NAT)
-sudo ifconfig {any driver but that 10.152.xx.xx) inet 192.168.xx.xx netmask 255.255.255.0 broadcast 192.168.xx.255
+> "17 OCT 2023 01:00:00" (Always UTC)
+```
+```bash
+#Configure using the NAT
+sudo ifconfig {any driver but that 10.152.xx.xx} inet 192.168.xx.xx netmask 255.255.255.0 broadcast 192.168.xx.255
 sudo ip route add default via 192.168.xx.xx
+```
 > Check start and end from IP range.
-
-
+{: prompt-info }
+```bash
 sudo nano /etc/systemcheck.d/30_default.conf
 """
 NO_EXIT_ON_UNSUPPORTED_VIRTUALIZER="1"
 
 NO_EXIT_ON_IP_FORWARDING_DETECTION="1"
 """
-
+```
+```bash
 systemcheck
 
 sudo tor@default restart
-
-in your VM:
+```
+#### in your VM:
+```bash
 (If you don't have any IP addr attributed)
 sudo dhclient
-
-(for the same driver in whonix gateway 10.152.xx.xx)
-
+````
+> (for the same driver in whonix gateway 10.152.xx.xx)
+{: prompt-info }
+```bash
 sudo ifconfig {interface} inet 10.152.152.11 netmask 255.255.192.00 broadcast 10.152.191.255
-sudo ip route add default via 10.152.152.xx (THAT IP SHOWS IN Whonix)
+sudo ip route add default via 10.152.152.xx
 ```
+>THAT IP SHOW IN WHONIX
+{: prompt-warn }
